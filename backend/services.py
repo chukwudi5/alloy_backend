@@ -1,6 +1,7 @@
 from dotenv import load_dotenv
 import requests
 import os
+import json
 load_dotenv()
 
 def get_alloy_summary(request):
@@ -13,9 +14,9 @@ def get_alloy_summary(request):
     try:
         response = requests.post(api_url, data=request, auth=auth)
         if response.status_code == 201:
-            result = response.json
+            result = json.loads(response.text)
     except requests.exceptions.RequestException as e:
         #Handle error
         print(e)
-
-    return result.summary.outcome
+        
+    return result['summary']['outcome']
