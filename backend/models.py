@@ -12,6 +12,7 @@ class Application(models.Model):
     phone_number = models.CharField(max_length=10)
     birth_date = models.DateField()
     document_ssn = models.CharField(max_length=9)
+    outcome = models.CharField(max_length=200)
 
     def __str__(self):
         return self.name_first
